@@ -1,0 +1,35 @@
+<a class="back" routerLink="/events">
+  <span class="sym" aria-hidden="true">&#8592;</span> Retour aux événements
+</a>
+
+@if (event(); as ev) {
+  <article class="details">
+    <img [src]="ev.imageUrl" [alt]="ev.title" />
+    <div class="content">
+      <span class="badge">{{ ev.category | uppercase }}</span>
+      <h1>{{ ev.title }}</h1>
+      <p class="meta">
+        <span class="sym" aria-hidden="true">&#9719;&#xFE0E;</span>
+        {{ ev.date | date: 'fullDate' }}
+      </p>
+      <p class="meta">
+        <span class="sym" aria-hidden="true">&#9673;&#xFE0E;</span>
+        {{ ev.place }}
+      </p>
+      <p class="price" [class.free]="ev.price === 0">
+        @if (ev.price === 0) {
+          Gratuit
+        } @else {
+          {{ ev.price | currency: 'TND' : 'symbol' : '1.0-0' }}
+        }
+      </p>
+      <p class="description">{{ ev.description }}</p>
+    </div>
+  </article>
+} @else {
+  <div class="not-found">
+    <h1><span class="sym" aria-hidden="true">&#10005;&#xFE0E;</span> Événement introuvable</h1>
+    <p>Aucun événement ne correspond à l'identifiant « {{ id() }} ».</p>
+    <a class="btn" routerLink="/events">Voir tous les événements</a>
+  </div>
+}

@@ -1,0 +1,44 @@
+<article class="card" [class.is-fav]="favorite()">
+  <div class="media">
+    <img [src]="event().imageUrl" [alt]="event().title" loading="lazy" />
+    <span class="category">{{ event().category }}</span>
+    <span class="price" [class.free]="event().price === 0">
+      @if (event().price === 0) {
+        Gratuit
+      } @else {
+        {{ event().price | currency: 'TND' : 'symbol' : '1.0-0' }}
+      }
+    </span>
+  </div>
+
+  <div class="body">
+    <p class="date">
+      <span class="sym" aria-hidden="true">&#9719;&#xFE0E;</span>
+      {{ event().date | date: 'd MMMM y' }}
+    </p>
+    <h2 class="title">{{ event().title }}</h2>
+    <p class="place">
+      <span class="sym" aria-hidden="true">&#9673;&#xFE0E;</span>
+      {{ event().place }}
+    </p>
+
+    <div class="actions">
+      <button
+        type="button"
+        class="fav"
+        [class.active]="favorite()"
+        [attr.aria-pressed]="favorite()"
+        [attr.aria-label]="favorite() ? 'Retirer des favoris' : 'Ajouter aux favoris'"
+        (click)="onToggle()"
+      >
+        @if (favorite()) {
+          <span class="sym" aria-hidden="true">&#9733;&#xFE0E;</span> Favori
+        } @else {
+          <span class="sym" aria-hidden="true">&#9734;&#xFE0E;</span> Ajouter
+        }
+      </button>
+
+      <a class="more" [routerLink]="['/events', event().id]">Voir les détails</a>
+    </div>
+  </div>
+</article>

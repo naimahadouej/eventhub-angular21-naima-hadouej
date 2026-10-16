@@ -1,0 +1,102 @@
+/* ---------- Design tokens: dark velvet + pink gradient ---------- */
+:root {
+  color-scheme: dark;
+
+  /* Velvet surfaces */
+  --bg: #14061f;
+  --surface: #1c0b2e;
+  --card: #241039;
+  --card-hover: #2c1546;
+
+  /* Text */
+  --text: #f6edfb;
+  --muted: #b8a5cc;
+  --border: rgb(255 255 255 / 0.1);
+
+  /* Accents */
+  --primary: #c026d3;
+  --pink: #f472b6;
+  --pink-strong: #db2777;
+  --lilac: #d8b4fe;
+  --success: #5eead4;
+
+  /* Gradient: velvet violet to pink */
+  --gradient: linear-gradient(135deg, #6d28d9 0%, #c026d3 50%, #db2777 100%);
+  --gradient-soft: linear-gradient(135deg, #3b1470 0%, #7a1d6c 100%);
+
+  /* Shape and depth */
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 16px 36px rgb(0 0 0 / 0.45);
+  --glow: 0 6px 18px rgb(219 39 119 / 0.35);
+  --focus: 0 0 0 3px rgb(244 114 182 / 0.55);
+
+  /* Fonts (loaded in index.html) */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+}
+
+/* ---------- Base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  background:
+    radial-gradient(800px 500px at 90% -5%, rgb(219 39 119 / 0.28), transparent 60%),
+    radial-gradient(900px 600px at 0% 0%, rgb(124 58 237 / 0.26), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--pink-strong);
+  color: #fff;
+}
+
+/* ---------- Accessibility ---------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ---------- Symbols (replace emojis) ----------
+   <span class="sym" aria-hidden="true">&#9733;&#xFE0E;</span> */
+.sym {
+  display: inline-block;
+  font-family: 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'Apple Symbols', system-ui, sans-serif;
+  font-style: normal;
+  line-height: 1;
+}

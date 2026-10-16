@@ -1,0 +1,43 @@
+<section>
+  <div class="toolbar">
+    <h1>Événements à venir</h1>
+    <span class="counter" [class.has-fav]="favoritesCount() > 0">
+      <span class="sym" aria-hidden="true">&#9733;&#xFE0E;</span>
+      {{ favoritesCount() }} {{ favoritesCount() > 1 ? 'favoris' : 'favori' }}
+    </span>
+  </div>
+
+  <div class="filters" role="group" aria-label="Filtrer par catégorie">
+    @for (cat of categories(); track cat) {
+      <button
+        type="button"
+        class="chip"
+        [class.active]="selectedCategory() === cat"
+        (click)="selectCategory(cat)"
+      >
+        {{ cat }}
+      </button>
+    }
+  </div>
+
+  <input
+    class="search"
+    type="search"
+    placeholder="&#8981; Rechercher un événement…"
+    aria-label="Rechercher un événement"
+    [value]="search()"
+    (input)="onSearch($event)"
+  />
+
+  <div class="grid">
+    @for (event of filteredEvents(); track event.id) {
+      <app-event-card
+        [event]="event"
+        [favorite]="isFavorite(event.id)"
+        (toggleFavorite)="toggleFavorite($event)"
+      />
+    } @empty {
+      <p class="empty">Aucun événement disponible</p>
+    }
+  </div>
+</section>

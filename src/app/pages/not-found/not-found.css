@@ -1,0 +1,38 @@
+.nf {
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+/* The big 404: the one bold element of this page */
+.code {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 16vw, 9rem);
+  font-weight: 700;
+  line-height: 1;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nf p {
+  color: var(--muted);
+}
+
+a {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--gradient);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--glow);
+  transition: filter 0.2s;
+}
+
+a:hover {
+  filter: brightness(1.12);
+}
